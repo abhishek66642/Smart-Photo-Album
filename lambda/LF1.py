@@ -1,6 +1,7 @@
 import json
 import boto3
 import requests
+import os
 
 def lambda_handler(event, context):
     # TODO implement
@@ -32,13 +33,10 @@ def lambda_handler(event, context):
     host = os.environ['ELASTIC_SOURCE']
     index = 'photos'
     type = '_doc'
-    url = host + '/' + index + '/' + type
+    url = host + '/' + index + '/' + type + '/' + lf1response['objectKey']
 
     headers = { "Content-Type": "application/json" }
-    
+    print(lf1response)
     r = requests.post(url, auth= (os.environ["ELASTIC_USER"],os.environ["ELASTIC_PASS"]), json=lf1response,headers=headers)
     
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
+    return lf1response
