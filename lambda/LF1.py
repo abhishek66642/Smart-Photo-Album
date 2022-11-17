@@ -18,6 +18,8 @@ def lambda_handler(event, context):
         "createdTimestamp":head_object['LastModified'].strftime("%Y%m%d-%H%M%S"),
         "labels":[]
     }
+
+    print ("LF1 Response and Checking Lambda Code Pipeline")
     
     customLabels = head_object['ResponseMetadata']['HTTPHeaders'].get('x-amz-meta-customLabels')
     if (customLabels!=None):
