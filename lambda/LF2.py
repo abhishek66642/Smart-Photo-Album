@@ -24,6 +24,7 @@ def get_labels(query):
     )
 
     print ("LF2 Labels and Checking Lambda Code Pipeline")
+    print ("LF2 Labels and Checking Lambda Code Pipeline Part2")
     
     interpretedValue = response["interpretations"][0]["intent"]["slots"]["ObjectName"]["value"]["interpretedValue"]
     labels = cleanData(interpretedValue)

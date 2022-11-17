@@ -20,6 +20,7 @@ def lambda_handler(event, context):
     }
 
     print ("LF1 Response and Checking Lambda Code Pipeline")
+    print ("LF1 Response and Checking Lambda Code Pipeline Part2")
     
     customLabels = head_object['ResponseMetadata']['HTTPHeaders'].get('x-amz-meta-customLabels')
     if (customLabels!=None):
