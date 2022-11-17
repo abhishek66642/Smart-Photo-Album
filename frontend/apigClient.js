@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://c91f0rhbj7.execute-api.us-east-1.amazonaws.com/Test3';
+    var invokeUrl = 'https://c91f0rhbj7.execute-api.us-east-1.amazonaws.com/Test4';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -140,12 +140,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadBucketFolderOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['x-amz-meta-customLabels'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['bucket', 'folder'], ['body']);
         
         var uploadBucketFolderOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/upload/{bucket}/{folder}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-amz-meta-customLabels']),
+            path: pathComponent + uritemplate('/upload/{bucket}/{folder}').expand(apiGateway.core.utils.parseParametersToObject(params, ['bucket', 'folder'])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };

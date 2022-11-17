@@ -38,12 +38,14 @@ function upload() {
     "bucket": "b2bucketphotos",
     "folder": filename,
     "x-amz-meta-customLabels": customLabels,
-    "Content-Type": "image/jpg;base64" + ";" + customLabels,
+    "Content-Type": "image/jpg;base64"
   };
 
   var additionalParams = {
     headers: {
-      "Content-Type": "image/jpg;base64" + ";" + customLabels
+      "Content-Type": "image/jpg;base64",
+      "x-amz-meta-customLabels": customLabels,
+
     }
   };
 
@@ -147,9 +149,9 @@ function showImages(res) {
       var newDiv = document.getElementById("div");
       newDiv.style.display = 'inline'
       var newContent = document.createElement("img");
-      newContent.style.height = '300px';
-      newContent.style.width = '600px';
-      newContent.src = 'https://b2-hw2.s3.amazonaws.com/' + res[i];
+      newContent.style.height = 'inherit';
+      newContent.style.width = 'inherit';
+      newContent.src = 'https://b2bucketphotos.s3.amazonaws.com/' + res[i];
       newDiv.appendChild(newContent);
       var currentDiv = document.getElementById("div1");
       document.body.insertBefore(newDiv, currentDiv);
