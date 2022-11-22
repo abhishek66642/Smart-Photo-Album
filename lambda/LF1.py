@@ -18,10 +18,6 @@ def lambda_handler(event, context):
         "createdTimestamp":head_object['LastModified'].strftime("%Y%m%d-%H%M%S"),
         "labels":[]
     }
-
-    print ("LF1 Response and Checking Lambda Code Pipeline")
-    print("Hello world")
-    print ("LF1 Response and Checking Lambda Code Pipeline Part2")
     
     customLabels = head_object['ResponseMetadata']['HTTPHeaders'].get('x-amz-meta-customLabels')
     if (customLabels!=None):
@@ -40,7 +36,6 @@ def lambda_handler(event, context):
     url = host + '/' + index + '/' + type + '/' + lf1response['objectKey']
 
     headers = { "Content-Type": "application/json" }
-    print(lf1response)
     r = requests.post(url, auth= (os.environ["ELASTIC_USER"],os.environ["ELASTIC_PASS"]), json=lf1response,headers=headers)
     
     return lf1response

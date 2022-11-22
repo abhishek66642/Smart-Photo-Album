@@ -22,9 +22,6 @@ def get_labels(query):
         localeId = 'en_US',
         text=query
     )
-
-    print ("LF2 Labels and Checking Lambda Code Pipeline")
-    print ("LF2 Labels and Checking Lambda Code Pipeline Part2")
     
     interpretedValue = response["interpretations"][0]["intent"]["slots"]["ObjectName"]["value"]["interpretedValue"]
     labels = cleanData(interpretedValue)
@@ -70,8 +67,6 @@ def lambda_handler(event, context):
     image_array = []
     for label in label_list:
         image_array.extend(get_photo_path(label))
-    
-    print (image_array)
     
     return {
         'statusCode': 200,
